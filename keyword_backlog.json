@@ -1,0 +1,5 @@
+{
+  "_readme": "Cola de oportunidades de keywords descubiertas via Ubersuggest, no cubiertas todavia por ningun articulo en content/. status: pending -> in_progress -> published. Marcar 'rejected' (con rejected_reason) para las que el cliente vete explicitamente - nunca borrarlas, para conservar el historial de por que no se usaron. Actualizar cuando se escriba un articulo para esa keyword.",
+  "discovered_at": "AAAA-MM-DD",
+  "opportunities": []
+}
