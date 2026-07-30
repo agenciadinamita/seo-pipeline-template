@@ -43,9 +43,11 @@ no requiere una decisión suya.
 7. **¿Hay al menos un artículo real publicado (o al menos en borrador) en WordPress?** Revisa
    `.published.json`. Si está vacío, ese es el siguiente paso: escribe y valida el primer
    artículo, corre `--dry-run`, luego push real.
-8. **¿Se decidió algo sobre automatización (Routine semanal/mensual)?** Si el usuario no lo ha
-   mencionado, pregúntaselo explícitamente en vez de asumir que no la quiere — pero nunca la
-   crees sin que él lo pida.
+8. **¿Existen ya las dos Routines estándar de este cliente** (contenido semanal + refresh de
+   keywords mensual, definidas en `CONVENTIONS.md` → "Automatizaciones")? Si el usuario no lo ha
+   mencionado, pregúntaselo explícitamente en vez de asumir que no las quiere — pero nunca las
+   crees sin que él lo pida. Cuando las cree, usa los nombres, cron y contrato exactos de
+   `CONVENTIONS.md` (no improvises variantes) y registra los `trigger_id` en `CLIENTES.md`.
 9. **¿Este cliente ya está registrado en `CLIENTES.md`** del repo
    [`agenciadinamita/seo-pipeline-template`](https://github.com/agenciadinamita/seo-pipeline-template)?
    Si no, agrégalo (repo, dominio, `trigger_id` si aplica) en cuanto tengas esos datos — no hace
