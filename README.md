@@ -10,34 +10,30 @@ o revisa el historial de la sesión donde se creó esta plantilla.
 
 ## Cómo arrancar con un cliente nuevo
 
-1. **Clona/usa este repo como base** para el repo dedicado del cliente nuevo (uno por cliente,
-   nunca compartido entre varios).
-2. **Llena `CLAUDE.md`** con la información real del cliente — reemplaza cada `[PLACEHOLDER]`.
-   Borra las secciones marcadas `EJEMPLO — borrar` una vez que entiendas el patrón. No copies las
-   reglas de formato ahí — esas viven en `CONVENTIONS.md` y se comparten con todos los clientes.
-3. **Borra `content/00-EJEMPLO-borrar-antes-de-usar.md`** una vez que hayas visto el formato — no
-   es contenido real, es una plantilla de referencia.
-4. **Configura WordPress:**
-   - Crea un Application Password para un usuario admin (Ajustes → Usuarios → Perfil).
-   - Instala `wp-yoast-rest.php` vía el plugin Code Snippets (sin esto, los campos de Yoast se
-     pierden al publicar por API).
-5. **Copia `.env.example` a `.env`** y llena `WP_URL`, `WP_USER`, `WP_APP_PASSWORD`.
-6. **Investiga keywords reales** (Ubersuggest u otra fuente de datos de búsqueda) antes de definir
-   los clusters de contenido en `CLAUDE.md` — nunca inventar volumen/dificultad.
-7. Si el cliente **ya tiene un blog**, audítalo antes de escribir nada nuevo — ver `CONVENTIONS.md`.
-8. Escribe el primer artículo, valida su frontmatter y conteo de palabras, corre:
-   ```bash
-   pip install -r requirements.txt
-   python publish.py --dry-run
-   python publish.py --only <slug-del-primer-articulo>
-   ```
-9. Revisa el borrador en WordPress antes de publicar nada en vivo.
-10. **Agrega este cliente a [`CLIENTES.md`](./CLIENTES.md)** en este mismo repo plantilla.
+1. **Crea el repo del cliente en GitHub** (vacío está bien).
+2. **Abre un chat nuevo** en claude.ai/code, conéctalo a ese repo, y dile:
+   > "Trae la estructura base de agenciadinamita/seo-pipeline-template a este repo."
+3. **A partir de ahí, `CLAUDE.md` mismo le dice al agente qué preguntar y qué sigue** — tiene una
+   sección de auto-diagnóstico ("Estado de configuración") que corre sola al empezar cada sesión:
+   detecta qué falta (datos del cliente, keywords, WordPress, primer artículo, automatización,
+   registro en `CLIENTES.md`) y te va guiando paso a paso, sin que tengas que recordar el orden.
+
+Si prefieres verlo explícito, este es el orden que sigue internamente:
+- Llenar `CLAUDE.md` con datos reales del cliente (nunca copiar las reglas de formato ahí — esas
+  viven en `CONVENTIONS.md`, compartidas).
+- Investigar keywords reales y definir clusters.
+- Configurar WordPress (Application Password + `wp-yoast-rest.php`) y habilitar el acceso de red
+  al dominio del cliente en el entorno de la sesión.
+- Auditar blog existente, si lo hay, antes de escribir nada nuevo.
+- Escribir y validar el primer artículo, `--dry-run`, push real de prueba.
+- Decidir sobre automatización.
+- Registrar al cliente en `CLIENTES.md`.
 
 ## Estructura
 
 ```
-CLAUDE.md               ← específico del cliente: negocio, restricciones, clusters, voz
+CLAUDE.md               ← específico del cliente: negocio, restricciones, clusters, voz,
+                           y el checklist de auto-diagnóstico que guía el onboarding
 CONVENTIONS.md          ← compartido entre TODOS los clientes: formato, frontmatter, no-negociables
 CLIENTES.md              ← (solo en este repo plantilla) registro de qué clientes existen
 content/                 ← artículos, uno por archivo .md, con frontmatter
@@ -60,7 +56,8 @@ al chat de ese cliente y dile algo como:
 
 Para actualizar los archivos de código (`publish.py`, `wp-yoast-rest.php`, `requirements.txt`), es
 la misma idea: pídele que traiga la versión más reciente de esos archivos específicos desde el
-template y abra un PR.
+template y abra un PR. Lo mismo aplica si mejoras el checklist de auto-diagnóstico en `CLAUDE.md`
+— eso también hay que pedirlo explícitamente por cliente, no se propaga solo.
 
 Usa [`CLIENTES.md`](./CLIENTES.md) para saber a qué clientes tienes que pedírselo — y anota ahí
 cuando ya lo hayas hecho, en la tabla de "Historial de cambios propagados".
