@@ -1,6 +1,8 @@
 # CLAUDE.md — [NOMBRE DEL CLIENTE] SEO Pipeline
 
-Context file for Claude Code. Read this fully before doing anything.
+Context file for Claude Code. Read this fully before doing anything — **empieza por la sección
+"Estado de configuración" de abajo, siempre, antes de atender cualquier otra cosa que te pida el
+usuario**, salvo que la petición sea obviamente urgente y no relacionada con el setup.
 
 **Lee también [`CONVENTIONS.md`](./CONVENTIONS.md)** — reglas de formato, frontmatter, linking y
 no-negociables, compartidas con todos los clientes de este pipeline. Ese archivo se actualiza
@@ -10,6 +12,48 @@ edites su contenido directamente en este repo (el próximo pull lo sobrescribir�
 > **Instrucciones de uso de esta plantilla:** reemplaza cada `[PLACEHOLDER]` con la información real
 > del cliente. Las secciones marcadas `EJEMPLO — borrar` muestran cómo se ve un caso ya resuelto
 > (tomado de un proyecto real) — bórralas una vez que entiendas el patrón.
+
+---
+
+## 🧭 Estado de configuración — revisa esto SIEMPRE al empezar una sesión en este repo
+
+No le preguntes al usuario "¿qué necesitas?" a ciegas. Corre este checklist tú mismo, en orden,
+y con lo que encuentres arma un reporte corto de qué está listo y cuál es **el siguiente paso
+pendiente** — luego pregúntale al usuario si quiere seguir con ese paso, o hazlo directamente si
+no requiere una decisión suya.
+
+1. **¿Este `CLAUDE.md` sigue teniendo `[PLACEHOLDERS]` sin llenar** en "The project", "Content
+   plan" o "Voice"? → Si sí, ese es el paso 1: pídele al usuario los datos reales del cliente
+   (negocio, diferenciadores, contacto, idioma) y llénalos tú mismo en el archivo.
+2. **¿Los clusters de "Content plan" tienen keywords reales** (con volumen/dificultad de
+   Ubersuggest) o siguen siendo el placeholder de ejemplo? → Si son placeholder, investiga
+   keywords reales del negocio del cliente y arma los clusters.
+3. **¿Sigue existiendo `content/00-EJEMPLO-borrar-antes-de-usar.md`?** → Bórralo una vez que ya
+   escribiste al menos un artículo real siguiendo su formato.
+4. **¿Existe `.env` en este repo** (no vas a poder leer su contenido, pero sí confirmar que el
+   archivo existe)? Si no existe, pregunta al usuario por `WP_URL`, `WP_USER`, `WP_APP_PASSWORD`
+   del WordPress del cliente y créalo. Recuérdale instalar `wp-yoast-rest.php` vía Code Snippets
+   si todavía no lo hizo.
+5. **¿El entorno de esta sesión tiene acceso de red al dominio del cliente?** Pruébalo con un
+   curl simple. Si falla, dile exactamente cómo habilitarlo (Network access → Custom → Allowed
+   domains en la configuración del entorno) antes de seguir con cualquier cosa que toque WordPress.
+6. **¿El cliente ya tenía un blog antes de este pipeline?** Si nunca se documentó una auditoría
+   en este archivo, y hay contenido existente en su WordPress, detente y haz la auditoría (ver
+   `CONVENTIONS.md`) antes de escribir nada nuevo — no lo saltes aunque el usuario no lo mencione.
+7. **¿Hay al menos un artículo real publicado (o al menos en borrador) en WordPress?** Revisa
+   `.published.json`. Si está vacío, ese es el siguiente paso: escribe y valida el primer
+   artículo, corre `--dry-run`, luego push real.
+8. **¿Se decidió algo sobre automatización (Routine semanal/mensual)?** Si el usuario no lo ha
+   mencionado, pregúntaselo explícitamente en vez de asumir que no la quiere — pero nunca la
+   crees sin que él lo pida.
+9. **¿Este cliente ya está registrado en `CLIENTES.md`** del repo
+   [`agenciadinamita/seo-pipeline-template`](https://github.com/agenciadinamita/seo-pipeline-template)?
+   Si no, agrégalo (repo, dominio, `trigger_id` si aplica) en cuanto tengas esos datos — no hace
+   falta esperar a que el usuario lo pida.
+
+**Repórtale esto al usuario de forma breve** ("Ya tienes X e Y resueltos. Lo que sigue es Z —
+¿seguimos con eso?") en vez de una lista larga — el checklist es para ti, no para mostrárselo
+completo cada vez.
 
 ---
 
@@ -39,7 +83,7 @@ edites su contenido directamente en este repo (el próximo pull lo sobrescribir�
 >   también, explícitamente, en su prompt** — la Routine no lee este archivo, así que una regla que
 >   solo vive aquí nunca le llega.
 
-Si este cliente tiene restricciones de contenido, documentálas aquí con la misma estructura: qué
+Si este cliente tiene restricciones de contenido, documéntalas aquí con la misma estructura: qué
 no se debe hacer, dónde vive lo ya existente sobre ese tema, y qué automatizaciones hay que
 blindar también.
 
@@ -90,14 +134,8 @@ vez de repetir la descripción de la voz cada vez.
 
 ## Your job, Claude Code
 
-Prioridad recomendada para arrancar con un cliente nuevo:
-
-1. Llenar esta plantilla con la información real del cliente.
-2. Investigar keywords reales (Ubersuggest u otra fuente), definir clusters.
-3. Configurar WordPress: Application Password + `wp-yoast-rest.php`.
-4. Si hay blog existente, auditarlo antes de escribir nada nuevo (ver `CONVENTIONS.md`).
-5. Escribir y validar el primer artículo, correr `--dry-run`, luego push real de prueba.
-6. Confirmar con el cliente el criterio de publicación (borrador con revisión, o en vivo directo)
-   antes de automatizar nada.
-
 **No publicar nada en vivo sin autorización explícita del cliente.** Borradores por default.
+
+Para cualquier duda de "qué sigue", vuelve a correr el checklist de "Estado de configuración" de
+arriba — es la fuente de verdad de en qué punto está este cliente, no una lista que se corre una
+sola vez al principio.
