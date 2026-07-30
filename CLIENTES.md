@@ -34,4 +34,4 @@ anótalo aquí — para saber qué clientes ya recibieron qué mejora y cuáles 
 
 | Fecha | Cambio | Aplicado a |
 |---|---|---|
-| 2026-07-30 | es-MX por default (incl. `image_alt`) + contrato estándar de las 2 Routines en `CONVENTIONS.md` | AJI Patrimonial ([PR #2](https://github.com/agenciadinamita/aji-seo-content/pull/2), pendiente de merge — creó `CONVENTIONS.md` por primera vez, no existía) · Transportes Niu ([PR #2](https://github.com/agenciadinamita/transportes-niu-seo-content/pull/2), pendiente de merge) |
+| 2026-07-30 | es-MX por default (incl. `image_alt`) + contrato estándar de las 2 Routines en `CONVENTIONS.md` | AJI Patrimonial ([PR #2](https://github.com/agenciadinamita/aji-seo-content/pull/2), mergeado — creó `CONVENTIONS.md` por primera vez, no existía) · Transportes Niu ([PR #2](https://github.com/agenciadinamita/transportes-niu-seo-content/pull/2), mergeado) |
