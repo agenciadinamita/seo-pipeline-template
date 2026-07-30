@@ -21,6 +21,7 @@ tabla para saber exactamente cuáles repos y rutinas tocar — no confíes en la
 | Cliente | Repo | Dominio WordPress | Rutina semanal (trigger_id) | Rutina refresh (trigger_id) | Estado | Notas |
 |---|---|---|---|---|---|---|
 | AJI Patrimonial | [`agenciadinamita/aji-seo-content`](https://github.com/agenciadinamita/aji-seo-content) | ajipatrimonial.com | `trig_01W7tuwXpjT6GMgTu9QpjWPx` (v3, sin ejidal) | `trig_01HsvUuBQHzbhDkLYuAX6kbC` (mensual, sin verificar todavía) | 🟢 Activo | Restricción de cliente: nada de contenido sobre "terreno ejidal" (ver su `CLAUDE.md`). 49 posts legacy se conservan en vivo por decisión del cliente, sin redirects. |
+| Transportes Niu | [`agenciadinamita/transportes-niu-seo-content`](https://github.com/agenciadinamita/transportes-niu-seo-content) | transportesniu.com | — (ninguna todavía) | — (ninguna todavía) | 🟡 En configuración | Datos del cliente en `CLAUDE.md` sacados por búsqueda web (el entorno no tiene acceso de red al dominio) — pendiente verificar teléfono/WhatsApp y constructor de WordPress. Faltan: clusters de keywords reales, voz definida, `.env` de WordPress, y decisión sobre auditoría de blog existente. |
 
 *(Agrega una fila por cada cliente nuevo, en el mismo formato.)*
 
